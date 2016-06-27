@@ -19,6 +19,7 @@
 #include <sqlite3ext.h> 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "../glitexbase.h"
 
 SQLITE_EXTENSION_INIT1
@@ -27,11 +28,9 @@ SQLITE_EXTENSION_INIT1
 __declspec(dllexport)
 #endif
 
-
 void str_join(sqlite3_context* ctx, int argc, sqlite3_value** values)
 {
   GoString input[argc-1];
-  //int i = 1;
   for (int i = 1; i < argc; i++)
   {
   	input[i-1].p = sqlite3_value_text(*(values + i));
@@ -41,7 +40,7 @@ void str_join(sqlite3_context* ctx, int argc, sqlite3_value** values)
   GoString sep = {sqlite3_value_text(*values), sqlite3_value_bytes(*values)};
   GoSlice slice = { &input[0], argc-1, argc-1 };
   struct CJoin_return result = CJoin(sep, slice);
-  sqlite3_result_text(ctx, result.r0, result.r1, NULL);
+  sqlite3_result_text(ctx, result.r0, result.r1, free);
 }
 
 
