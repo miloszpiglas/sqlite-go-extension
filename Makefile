@@ -9,11 +9,11 @@ glitexbase.h: glitex.go
 archive: glitexbase.a glitexbase.h
 	
 	
-c_string: archive run_glitex.c
-	gcc -o c_string run_glitex.c glitexbase.a -lpthread
+c_string: archive tests/c_string.c
+	gcc -o run_test run_glitex.c glitexbase.a -lpthread
 
 go_string: archive tests/go_string.c
-	gcc -o go_string tests/go_string.c glitexbase.a -lpthread
+	gcc -o run_test tests/go_string.c glitexbase.a -lpthread
     
 clean:
-	rm -f glitexbase.* c_string
+	rm -f glitexbase.* run_test

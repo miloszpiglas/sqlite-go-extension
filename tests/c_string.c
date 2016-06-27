@@ -18,7 +18,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "glitexbase.h"
+#include "../glitexbase.h"
 
 int main() 
 {
