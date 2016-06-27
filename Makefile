@@ -14,6 +14,10 @@ c_string: archive tests/c_string.c
 
 go_string: archive tests/go_string.c
 	gcc -o run_test tests/go_string.c glitexbase.a -lpthread
+
+
+glitex.so: glitexbase.a extension/glitex.c
+	gcc -o glitex.so -fPIC -shared extension/glitex.c glitexbase.a -lpthread -std=c99
     
 clean:
-	rm -f glitexbase.* run_test
+	rm -f glitexbase.* run_test glitex.so
