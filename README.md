@@ -1,4 +1,6 @@
 # sqlite-go-extension
 Experimental SQLite extension implemented in Go
 
-1.
+## Demo
+
+![gif](https://github.com/miloszpiglas/sqlite-go-extension/blob/master/tty.gif)
