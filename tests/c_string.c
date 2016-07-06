@@ -39,4 +39,10 @@ int main()
     printf("%s\n", result.r0);
     free(result.r0);
     
+    GoString lic = License();
+    printf("licencse %s\n", lic.p);
+    
+    GoString ver = Version();
+    printf("version %s\n", ver.p);
+    
 }

@@ -23,6 +23,21 @@ import (
     "strings"
 )
 
+const (
+	license string = "GPLv3"
+)
+
+//export License
+func License() string {
+	return license
+}
+
+//export Version
+func Version() string {
+	return "1"
+}
+
+// Under specific circumstances program which calls this function might start panic
 //export PureJoin
 func PureJoin(sep string, values []string) string {
     result :=  strings.Join(values, sep)

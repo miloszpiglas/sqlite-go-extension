@@ -10,7 +10,7 @@ archive: glitexbase.a glitexbase.h
 	
 	
 c_string: archive tests/c_string.c
-	gcc -o run_test run_glitex.c glitexbase.a -lpthread
+	gcc -o run_test tests/c_string.c glitexbase.a -lpthread
 
 go_string: archive tests/go_string.c
 	gcc -o run_test tests/go_string.c glitexbase.a -lpthread

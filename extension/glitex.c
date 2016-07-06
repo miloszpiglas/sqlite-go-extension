@@ -43,6 +43,18 @@ void str_join(sqlite3_context* ctx, int argc, sqlite3_value** values)
   sqlite3_result_text(ctx, result.r0, result.r1, free);
 }
 
+void glitex_lic(sqlite3_context* ctx, int argc, sqlite3_value** values)
+{
+	GoString lic = License();
+	sqlite3_result_text(ctx, lic.p, lic.n, NULL);
+}
+
+void glitex_ver(sqlite3_context* ctx, int argc, sqlite3_value** values)
+{
+	GoString ver = Version();
+	sqlite3_result_text(ctx, ver.p, ver.n, NULL);
+}
+
 
 int sqlite3_glitex_init(
   sqlite3 *db, 
@@ -54,6 +66,10 @@ int sqlite3_glitex_init(
   SQLITE_EXTENSION_INIT2(pApi);
   sqlite3_create_function_v2(db, "STR_JOIN", -1, SQLITE_UTF8 | SQLITE_DETERMINISTIC, 
   								NULL, str_join, NULL, NULL, NULL); 
+  sqlite3_create_function_v2(db, "GLX_VERSION", 0, SQLITE_UTF8 | SQLITE_DETERMINISTIC, 
+  								NULL, glitex_ver, NULL, NULL, NULL); 
+  sqlite3_create_function_v2(db, "GLX_LICENSE", 0, SQLITE_UTF8 | SQLITE_DETERMINISTIC, 
+  								NULL, glitex_lic, NULL, NULL, NULL); 
 
   return rc;
 }
