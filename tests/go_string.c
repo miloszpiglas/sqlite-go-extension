@@ -34,8 +34,14 @@ int main()
     inputArray[2].n = 6;
     
     GoString sep = {";", 1};
-    GoSlice slice = { &inputArray[0], 3, 3 };
-    GoString result = PureJoin(sep, slice);
+    
+    GoSlice valid = { &inputArray[0], 1, 1 };
+    GoString result = PureJoin(sep, valid);
+    printf("First value from slice returned as the result: %s\n", result.p);
+    
+    GoSlice invalid = { &inputArray[0], 3, 3 };
+    // panic
+    result = PureJoin(sep, invalid);
     printf("%s\n", result.p);
     
 }
